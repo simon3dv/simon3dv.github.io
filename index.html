@@ -1,6 +1,8 @@
 <!doctype html>
 <html>
   <head>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+	 <script src="assets/js/glightbox.js"></script>
   <script src="https://use.fontawesome.com/baff6f55f5.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -8,6 +10,7 @@
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-light.css">
+	 <link href="assets/css/style.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="google-site-verification" content="D0ys6wLg07UNB0wxvc8V9r64Pwg4VU6mB_2gZNkVLhc" />
     <!--[if lt IE 9]>
@@ -61,15 +64,93 @@
       </header>
       <section>
       <h3>
-      <img src="avatar.jpg" height="325" width="239"></h3>
+      <img src="avatar.jpg" width="30%"></h3>
       <!--<p>请查看我的<a href="https://simon3dv.github.io/research/CV_Chinese.pdf">简历</a>!</p>-->
       <p>目前兴趣是深度学习和计算机视觉, 尤其是3D视觉.</p>
-      <p>News: 加入商汤 2020.7.28.</p>
+	  <p>News: 加入商汤 2020.7.28.</p>
+<!--font style="color:#2DC997";></font>-->
+<li><b>DNA-Rendering: A Diverse Neural Actor Repository for High-Fidelity Human-centric Rendering</b>.  Wei Cheng, Ruixiang Chen, Wanqi Yin, <b>Siming Fan</b>, Keyu Chen, Honglin He, Huiwen Luo, Zhongang Cai, Jingbo Wang, Yang Gao, Zhengming Yu, Zhengyu Lin, Daxuan Ren, Lei Yang, Ziwei Liu, Chen Change Loy, Chen Qian, Wayne Wu, Dahua Lin, Bo Dai, Kwan-Yee Lin.  <br>Tech Report 2023(<b>ICCV2023</b>)<a href="https://arxiv.org/abs/2307.10173"> [arxiv]</a> <a href="https://dna-rendering.github.io/"> [project page]</a> <a href="https://github.com/DNA-Rendering/DNA-Rendering"> [code]</a>.</font>
+
+<video width="100%" autoplay muted loop class="listitemimage" >
+  <source src="./research/teaser_dna_rendering.mp4" type="video/mp4">
+</video>
+<li><b>RenderMe-360: A Large Digital Asset Library and Benchmarks Towards High-fidelity Head Avatars</b>.  Pan, Dongwei and Zhuo, Long and Piao, Jingtan and Luo, Huiwen and Cheng, Wei and Wang, Yuxin and <b>Fan, Siming</b> and Liu, Shengqi and Yang, Lei and Dai, Bo and Liu, Ziwei and Loy, Chen Change and Qian, Chen and Wu, Wayne and Lin, Dahua and Lin, Kwan-Yee.  <br>Tech Report 2023<a href="https://arxiv.org/abs/2305.13353"> [arxiv]</a><a href="https://renderme-360.github.io/"> [project page]</a> <a href="https://github.com/RenderMe-360/RenderMe-360"> [code]</a>.</font>
+
+<video width="100%" autoplay muted loop class="listitemimage" >
+  <source src="./research/teaser_renderme_360.mp4" type="video/mp4">
+</video>
+<li><b>Simulating Fluids in Real-World Still Images</b>.  <b>Siming Fan</b>, Jingtan Piao, Chen Qian, Kwan-Yee Lin, Hongsheng Li.  <br>Tech Report 2022(<b>ICCV2023</b>)<a href="https://arxiv.org/abs/2204.11335"> [arxiv]</a><a href="https://slr-sfs.github.io/"> [project page]</a> <a href="https://github.com/simon3dv/SLR-SFS"> [code]</a>.</font>
+
+
+<video width="100%" autoplay muted loop class="listitemimage" >
+  <source src="./research/teaser-slr-sfs.mp4" type="video/mp4">
+</video>
+
       </section>
       <footer>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
+	 <script>
+    var lightbox = GLightbox();
+    lightbox.on('open', (target) => {
+        console.log('lightbox opened');
+    });
+    var lightboxDescription = GLightbox({
+        selector: '.glightbox2'
+    });
+    var lightboxVideo = GLightbox({
+        selector: '.glightbox3'
+    });
+    lightboxVideo.on('slide_changed', ({ prev, current }) => {
+        console.log('Prev slide', prev);
+        console.log('Current slide', current);
+
+        const { slideIndex, slideNode, slideConfig, player } = current;
+
+        if (player) {
+            if (!player.ready) {
+                // If player is not ready
+                player.on('ready', (event) => {
+                    // Do something when video is ready
+                });
+            }
+
+            player.on('play', (event) => {
+                console.log('Started play');
+            });
+
+            player.on('volumechange', (event) => {
+                console.log('Volume change');
+            });
+
+            player.on('ended', (event) => {
+                console.log('Video ended');
+            });
+        }
+    });
+
+    var lightboxInlineIframe = GLightbox({
+        selector: '.glightbox4'
+    });
+
+    /* var exampleApi = GLightbox({ selector: null });
+    exampleApi.insertSlide({
+        href: 'https://picsum.photos/1200/800',
+    });
+    exampleApi.insertSlide({
+        width: '500px',
+        content: '<p>Example</p>'
+    });
+    exampleApi.insertSlide({
+        href: 'https://www.youtube.com/watch?v=WzqrwPhXmew',
+    });
+    exampleApi.insertSlide({
+        width: '200vw',
+        content: document.getElementById('inline-example')
+    });
+    exampleApi.open(); */
+</script>
   </body>
 </html>
