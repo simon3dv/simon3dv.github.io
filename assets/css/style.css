@@ -18,7 +18,9 @@
 .listitemimage:hover{
     transform: scale(2.6);
 }
-
+.listitemimagepause:hover{
+    transform: scale(2.6);
+}
 .listitemimage2{
     width: 100%
     /*height: 100%*/

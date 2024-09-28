@@ -39,15 +39,14 @@
 		    <img src="English/200K.jpg" width="90%">
 			<h1>樊思明</h1>
         <h3><b>商汤全职员工</b></h3>
-		<b>研究兴趣</b><br>我目前对AIGC/LLM加速漫画/动画/游戏创作的方向很感兴趣，欢迎加我微信一起交流学习!(不看工作机会)<!--如有相关职位推荐请查看我的<a href="https://simon3dv.github.io/research/CV_Chinese.pdf">简历</a>!(2024.09)--><br>
-		<b>业余爱好</b><br>最喜爱的番剧是樱花庄的宠物女孩，为此制作了个<a href="https://www.bilibili.com/video/BV1Zs411i77R/?spm_id_from=333.999.0.0"></i>MAD</a>，这部番激励了我成为程序员。<br>
+		<b>个人陈述</b><br>动漫和单机游戏是我最大的爱好。最喜爱的番剧是<a href="https://zh.moegirl.org.cn/zh-hans/%E6%A8%B1%E8%8A%B1%E5%BA%84%E7%9A%84%E5%AE%A0%E7%89%A9%E5%A5%B3%E5%AD%A9"></i>樱花庄的宠物女孩</a>，为此制作了个<a href="https://www.bilibili.com/video/BV1Zs411i77R/?spm_id_from=333.999.0.0"></i>MAD</a>，这部番激励了我成为<a href="https://zh.moegirl.org.cn/zh-hans/%E8%B5%A4%E5%9D%82%E9%BE%99%E4%B9%8B%E4%BB%8B">赤坂龙之介</a>这样的程序员。我目前(2024.8-now)对AIGC/LLM加速漫画/动画/游戏创作的方向最感兴趣，欢迎加我微信一起交流学习!(不在看工作机会)<!--如有相关职位推荐请查看我的<a href="https://simon3dv.github.io/research/CV_Chinese.pdf">简历</a>!(2024.09)--><br>
 		<b>教育信息</b><br>
 		信息与计算科学学士(计算机科学方向)<br>
         <a href="http://www.math.uestc.edu.cn/">数学科学学院</a><br>
         <a href="https://www.uestc.edu.cn/">电子科技大学(UESTC)</a> 本科08.2017~07.2021</p>
 		 <p class="view"><b>Link</b>
     <h3><p class="view"><a href="https://simon3dv.github.io/"><i class="fa-solid fa-house-user"></i> 主页(Chinese)</a></p></h3>
-    <h3><p class="view"><a href="https://simon3dv.github.io/English"><i class="fa-solid fa-house"></i> Home(English)</a></p></h3>
+    <!--<h3><p class="view"><a href="https://simon3dv.github.io/English"><i class="fa-solid fa-house"></i> Home(English)</a></p></h3>-->
     <!--<h3><p class="view"><a href="https://simon3dv.github.io/research.html">Research</a></p></h3>-->
     <!--<h3><p class="view"><a href="https://simon3dv.github.io/research/CV_Chinese.pdf">简历(Chinese)</a></p></h3>  -->
     <!--<h3><p class="view"><a href="https://simon3dv.github.io/code.html">Code</a></p></h3> -->
@@ -76,20 +75,41 @@
 
 <h1>Open-source Projects</h1>
 <li>See more visulization in <a href="https://docs.google.com/presentation/d/1cyuVYw5DDlBnUbG2-DLo6fWGgYhiKvTUNeAD8Acf8OI/edit?usp=sharing">[Google Slide].</a>
-<h3>2024 MultiModal Frame Retrieval and Editting in video</h3>
+<h3>2024 MultiModal Frame Retrieval in video and Editting</h3>
 <!--font style="color:#2DC997";></font>-->
-<li><b></b>大规模合成姿态文本引导图片编辑数据集
+<li><b></b>大规模(18.6M)合成姿态文本标注([Comming later with TrackedID])
 <center>
-<video width="75%" autoplay muted loop class="listitemimage" >
+<video width="90%" autoplay muted loop class="listitemimage" >
   <source src="./research/posefix.mp4" type="video/mp4">
 </video>
 </center>
-<li><b></b>细粒度(动作/姿态)文本描述定位视频帧(Technical Report[comming soon])
+
+<p><center>(鼠标悬停以暂停)</center></p>
+<script>
+  // 等待页面加载完毕后执行代码
+  document.addEventListener('DOMContentLoaded', function() {
+    // 选择视频元素
+    const video = document.querySelector('.listitemimage');
+    
+    // 当鼠标悬停在视频上时暂停视频
+    video.addEventListener('mouseenter', function() {
+      video.pause();
+    });
+
+    // 当鼠标移开视频时恢复播放
+    video.addEventListener('mouseleave', function() {
+      video.play();
+    });
+  });
+
+</script>
+<li><b></b>细粒度(动作/姿态)文本描述定位视频帧大模型([comming soon])
 <center>
-<video width="75%" autoplay muted loop class="listitemimage" >
+<video width="90%" autoplay muted loop class="listitemimage" >
   <source src="./research/yoga_demo_4x.mp4" type="video/mp4">
 </video>
 </center>
+<p><center>(鼠标悬停以放大)</center></p>
 <!--<li><b></b>作为对比: 2D姿态匹配视频帧
 <center>
 <video width="75%" autoplay muted loop class="listitemimage" >
@@ -106,25 +126,28 @@
 
 
 <li><b>RenderMe-360: A Large Digital Asset Library and Benchmarks Towards High-fidelity Head Avatars</b>.  Pan, Dongwei and Zhuo, Long and Piao, Jingtan and Luo, Huiwen and Cheng, Wei and Wang, Yuxin and <u>Fan, Siming</u> and Liu, Shengqi and Yang, Lei and Dai, Bo and Liu, Ziwei and Loy, Chen Change and Qian, Chen and Wu, Wayne and Lin, Dahua and Lin, Kwan-Yee.  <br>NeurIPS 2023<a href="https://arxiv.org/abs/2305.13353"> [arxiv]</a><a href="https://renderme-360.github.io/"> [project page]</a> <a href="https://github.com/RenderMe-360/RenderMe-360"> [code]</a>.</font><img src="https://img.shields.io/github/stars/RenderMe-360/RenderMe-360.svg" alt="stars">
-
+<center>
 <video width="45%" autoplay muted loop class="listitemimage" >
   <source src="./research/teaser_dna_rendering_batch.mp4" type="video/mp4">
 </video>
 <video width="45%" autoplay muted loop class="listitemimage" >
   <source src="./research/teaser_renderme_360_batch.mp4" type="video/mp4">
 </video>
+</center>
+<p><center>(鼠标悬停以放大)</center></p>
 
 <li><b>Simulating Fluids in Real-World Still Images</b>.  <u>Siming Fan</u>, Jingtan Piao, Chen Qian, Kwan-Yee Lin, Hongsheng Li.  <br><b>ICCV2023 Oral</b><a href="https://arxiv.org/abs/2204.11335"> [arxiv]</a><a href="https://slr-sfs.github.io/"> [project page]</a> <a href="https://github.com/simon3dv/SLR-SFS"> [github]</a>.</font><img src="https://img.shields.io/github/stars/simon3dv/slr-sfs.svg" alt="stars">
 </center>
 
 
 <center>
-<video width="75%" autoplay muted loop class="listitemimage" >
+<video width="90%" autoplay muted loop class="listitemimage" >
   <source src="./research/teaser-slr-sfs_batch.mp4" type="video/mp4">
 
 </video>
 </center>
-<br><br>
+<p><center>(鼠标悬停以放大)</center></p>
+
 <h3>2020 RGB-Lidar 3D Detection & Unsupervised Domain Adaptation</h3>
 <li>Pytorch version of frustum-pointnets. <a href="https://github.com/simon3dv/frustum_pointnets_pytorch"> [code]</a><img src="https://img.shields.io/github/stars/simon3dv/frustum_pointnets_pytorch.svg" alt="stars">
 
