@@ -73,23 +73,146 @@
       <!--<p>请查看我的<a href="https://simon3dv.github.io/research/CV_Chinese.pdf">简历</a>!</p>-->    
 
 
+
 <h1>Open-source Projects</h1>
 <!--<li>See more visulization in <a href="https://docs.google.com/presentation/d/1cyuVYw5DDlBnUbG2-DLo6fWGgYhiKvTUNeAD8Acf8OI/edit?usp=sharing">[Google Slide].</a>-->
-<h3>2024 MultiModal Frame Retrieval in video and Editting</h3>
+<h2>2024 MultiModal Frame Retrieval in video and Editting</h2>
 <!--font style="color:#2DC997";></font>-->
-<li><b></b>VideoLLM检索视频帧
+<li><b>VideoLLM检索视频帧</b>
 <center>
-  <img src="./research/FrameLocalizationWithGPT4o.png" alt="Frame Localization Image" style="width:90%;">
+  <img src="./research/FrameLocalizationWithGPT4o.png" alt="Frame Localization Image" style="width:80%;">
 </center>
+<center><p>Demo result using our pipeline and GPT4o API</p></center>
 
-<li><b></b>大规模(18.6M instances)合成姿态文本标注(单帧姿态描述/双帧姿态变化量描述,用于检索和图像编辑模型训练)
-<center>
-<video width="90%" autoplay muted loop class="listitemimage" >
-  <source src="./research/posefix.mp4" type="video/mp4">
-</video>
-</center>
+<li><b>大规模(18.6M instances)合成姿态文本标注(分为(a)单帧姿态描述/(b)双帧姿态变化量描述两个版本,用于训练文本定位视频帧模型和图像编辑模型)</b>
+<div class="video-container" id="videoSlider">
+    <div class="video">
+        <video src="research/posescript_edit/bedlam.mp4" controls autoplay muted loop></video>
+    </div>
+    <div class="video">
+        <video src="research/posescript_edit/renbody.mp4" controls autoplay muted loop></video>
+    </div>
+    <div class="video">
+        <video src="research/posescript_edit/synbody_v1_1.mp4" controls autoplay muted loop></video>
+    </div>
+    <div class="video">
+        <video src="research/posescript_edit/pw3d.mp4" controls autoplay muted loop></video>
+    </div>
+    <div class="video">
+        <video src="research/posescript_edit/talkshow.mp4" controls autoplay muted loop></video>
+    </div>
+    <div class="video">
+        <video src="research/posescript_edit/egobody.mp4" controls autoplay muted loop></video>
+    </div>
+</div>
 
-<p><center>("双帧姿态变化量+第二帧描述"可视化, 类似<a href="https://arxiv.org/abs/2309.08480">PoseFix</a>!的带图像版本, 鼠标悬停以暂停)</center></p>
+<div class="slider-buttons">
+    <button class="arrow left" onclick="changeVideo(-1)">上一个数据集&#8592;</button>
+    <button class="arrow right" onclick="changeVideo(1)">下一个数据集&#8594;</button>
+</div>
+
+<div id="videoName" style="text-align: center; font-size: 18px; margin-top: 10px; font-weight: bold;"></div>
+<div id="nextVideoName" style="text-align: center; font-size: 16px; margin-top: 5px; color: #555;"></div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9; /* 背景色 */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .video-container {
+        display: flex;
+        overflow: hidden; /* 防止滚动 */
+        white-space: nowrap;
+        margin: 20px;
+        border-radius: 15px; /* 圆角边框 */
+        box-shadow: 0 0px 0px rgba(0, 0, 0, 0.2); /* 阴影效果 */
+        background-color: #f9f9f9; /* 视频容器背景色 */
+    }
+    .video {
+        display: inline-block;
+        margin: 0px;
+    }
+    .video video {
+        width: 450px;
+        height: 450px; /* 视频高度 */
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+    .slider-buttons {
+        text-align: center;
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+    .arrow {
+        padding: 15px;
+        font-size: 24px;
+        cursor: pointer;
+        border: none;
+        border-radius: 50%;
+        background-color: #4CAF50; /* 按钮背景色 */
+        color: white; /* 按钮字体颜色 */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .arrow:hover {
+        background-color: #45a049; /* 悬停时颜色变化 */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+    .arrow:focus {
+        outline: none;
+    }
+    #videoName {
+        color: #333; /* 视频名称颜色 */
+    }
+    #nextVideoName {
+        color: #555; /* 下一个视频名称颜色 */
+    }
+</style>
+
+<script>
+    const videos = document.querySelectorAll('.video video');
+    let currentIndex = 0; // 当前视频索引
+    const videoNameDisplay = document.getElementById('videoName');
+    const nextVideoNameDisplay = document.getElementById('nextVideoName');
+
+    function updateVideo(index) {
+        videos.forEach((video, i) => {
+            video.style.display = (i === index) ? 'block' : 'none'; // 仅显示当前视频
+        });
+
+        // 更新当前视频名称
+        const fileName = videos[index].src.split('/').pop(); // 获取视频文件名
+        videoNameDisplay.textContent = `正在播放: ${fileName}`;
+
+        // 更新下一个视频名称
+        const nextIndex = (index + 1) % videos.length; // 获取下一个视频索引
+        const nextFileName = videos[nextIndex].src.split('/').pop(); // 获取下一个视频文件名
+        nextVideoNameDisplay.textContent = `下一个视频: ${nextFileName}`;
+    }
+
+    function changeVideo(direction) {
+        currentIndex += direction; // 增加或减少索引
+        if (currentIndex < 0) {
+            currentIndex = videos.length - 1; // 循环到最后一个视频
+        } else if (currentIndex >= videos.length) {
+            currentIndex = 0; // 循环到第一个视频
+        }
+        updateVideo(currentIndex); // 更新视频显示
+    }
+
+    // 初始化显示第一个视频
+    updateVideo(currentIndex);
+
+</script>
+
+<p><center>(a)单帧姿态+Tracking可视化, <a href="https://github.com/naver/posescript">PoseScript</a>的图像版本,图上的文本为当前bbox人物的姿态描述，双击放大以查看详细标注，包括文本,MPJPE(关键点平均误差)和Y轴朝向(±180度为正面)。</center></p>
 <script>
   // 等待页面加载完毕后执行代码
   document.addEventListener('DOMContentLoaded', function() {
@@ -106,9 +229,17 @@
       video.play();
     });
   });
-
 </script>
-<li><b></b>细粒度(动作/姿态)文本描述定位视频帧大模型
+
+
+<center>
+<video width="90%" autoplay muted loop class="listitemimage" >
+  <source src="./research/posefix.mp4" type="video/mp4">
+</video>
+</center>
+<p><center>(b)双帧姿态描述变化量+第二帧姿态描述可视化(未Tracking版), <a href="https://arxiv.org/abs/2309.08480">PoseFix</a>的图像版本,双击放大以查看详细文本,MPJPE(关键点平均误差)和Y轴朝向(±180度为正面)。</center></p>
+
+<li><b>细粒度(动作/姿态)文本描述定位视频帧大模型</b>
 <center>
 <video width="90%" autoplay muted loop class="listitemimage" >
   <source src="./research/yoga_demo_4x.mp4" type="video/mp4">
@@ -125,7 +256,7 @@
 
 
 <br><br>
-<h3>2021-2023 Rendering & Animation</h3>
+<h2>2021-2023 Rendering & Animation</h2>
 
 <li><b>3D Animation with Secondary Motion</b>
 
@@ -164,8 +295,8 @@
 </center>
 <p><center>(鼠标悬停以放大)</center></p>
 
-<h3>2020 RGB-Lidar 3D Detection & Unsupervised Domain Adaptation</h3>
-<li>Pytorch version of frustum-pointnets. <a href="https://github.com/simon3dv/frustum_pointnets_pytorch"> [code]</a><img src="https://img.shields.io/github/stars/simon3dv/frustum_pointnets_pytorch.svg" alt="stars">
+<h2>2020 RGB-Lidar 3D Detection & Unsupervised Domain Adaptation</h2>
+<li><b>Pytorch version of frustum-pointnets. <a href="https://github.com/simon3dv/frustum_pointnets_pytorch"> [code]</a><img src="https://img.shields.io/github/stars/simon3dv/frustum_pointnets_pytorch.svg" alt="stars"></b>
 
       <!--<footer>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
