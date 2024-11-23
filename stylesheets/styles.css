@@ -112,7 +112,7 @@ img {
 header {
   width:360px;
   float:left;
-  position:fixed;
+  <!--position:fixed;-->
   -webkit-font-smoothing:subpixel-antialiased;
 }
 
