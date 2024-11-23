@@ -41,7 +41,7 @@
 		<b>个人陈述</b><br>动漫和单机游戏是我最大的爱好。最喜爱的番剧是<a href="https://zh.moegirl.org.cn/zh-hans/%E6%A8%B1%E8%8A%B1%E5%BA%84%E7%9A%84%E5%AE%A0%E7%89%A9%E5%A5%B3%E5%AD%A9"></i>樱花庄的宠物女孩</a>，为此制作了个<a href="https://www.bilibili.com/video/BV1Zs411i77R/?spm_id_from=333.999.0.0"></i>MAD</a>，这部番激励了我成为程序员。我目前(2024.9-now)对AIGC/LLM加速动漫、游戏创作的方向最感兴趣，欢迎加我<a href="https://msng.link/o?https://u.wechat.com/MBTLz4BSV53hVRv4Xvw6ziE=wc" class="author-social" target="_blank"><i class="fa-brands fa-weixin"></i> 微信</a>一起交流学习或者通过<a href="mailto:gzfansiming@gmail.com" class="author-social" target="_blank"><i class="fa-solid fa-envelope"></i> Gmail</a>联系我!<!--如有相关职位推荐请查看我的<a href="https://simon3dv.github.io/research/CV_Chinese.pdf">简历</a>!(2024.09)--><br>
 		<b>工作经历</b><br>
 		全灵(Seele) - 动作算法 11.2024~now <a href="https://zq6mcys13b.feishu.cn/docx/WRevdXj5NoHCI0xWPH3cKzuHnnd">各类岗位招聘中，欢迎投递</a><br>
-	        AVAR Aiuni - 动捕转MMD 10.2024~11.2024<br>
+	        AVAR Aiuni - <a href="https://www.bilibili.com/video/BV19xmBYxEsx">动捕转MMD转ai重绘 </a>  10.2024~11.2024<br>
 		商汤 MIG(移动智能)/数字孪生部门 - 视频理解/图像编辑 05.2023~10.2024 汇报对象是 <br><a href="https://scholar.google.com/citations?user=AerkT0YAAAAJ&hl=en">钱晨</a> 和 <a href="https://scholar.google.com/citations?user=KZn9NWEAAAAJ&hl=zh-CN">刘文韬</a>。<br>
         	商汤 研究院/3DAR部门 - 单图视角合成/动画/模拟 08.2020~04.2023 汇报对象是 <br><a href="https://scholar.google.com.hk/citations?user=beGt3cAAAAAJ&hl=en">林君仪</a> 和 mentor <a href="https://openreview.net/profile?id=~Jingtan_Piao1">朴镜潭</a>。
         	<br>
@@ -84,110 +84,6 @@
 <!--<li>See more visulization in <a href="https://docs.google.com/presentation/d/1cyuVYw5DDlBnUbG2-DLo6fWGgYhiKvTUNeAD8Acf8OI/edit?usp=sharing">[Google Slide].</a>-->
 <h2>2024 MultiModal Frame Retrieval in video and Editting</h2>
 <!--font style="color:#2DC997";></font>-->
-<li><b>VideoLLM检索视频帧</b>
-<center>
-  <img src="./research/FrameLocalizationWithGPT4o.png" alt="Frame Localization Image" style="width:80%;">
-</center>
-<center><p>BestMoment Annotation Example using our pipeline and GPT4o API, which is the best in action retrieval. </p></center>
-
-<li><b>大规模(18.6M instances)合成姿态文本标注</b>
-	<p>该数据集旨在解决姿态描述标注中人工标注过于昂贵(￥0.03/字)和GPT4o标注准确率过低(准确率人工:GPT:ours=95%:70%:95%)的问题, 分为(a)单帧姿态描述/(b)双帧姿态变化量描述两个版本, 用于训练文本定位视频帧模型和图像编辑模型。</p>
-<div class="video-container" id="videoSlider">
-    <div class="video">
-        <video src="research/posescript_edit/bedlam.mp4" controls autoplay muted loop></video>
-    </div>
-    <div class="video">
-        <video src="research/posescript_edit/renbody.mp4" controls autoplay muted loop></video>
-    </div>
-    <div class="video">
-        <video src="research/posescript_edit/synbody_v1_1.mp4" controls autoplay muted loop></video>
-    </div>
-    <div class="video">
-        <video src="research/posescript_edit/pw3d.mp4" controls autoplay muted loop></video>
-    </div>
-    <div class="video">
-        <video src="research/posescript_edit/talkshow.mp4" controls autoplay muted loop></video>
-    </div>
-    <div class="video">
-        <video src="research/posescript_edit/ubody.mp4" controls autoplay muted loop></video>
-    </div>
-    <div class="video">
-        <video src="research/posescript_edit/egobody.mp4" controls autoplay muted loop></video>
-    </div>
-    <div class="video">
-        <video src="research/posescript_edit/posetrack.mp4" controls autoplay muted loop></video>
-    </div>
-</div>
-
-<div class="slider-buttons">
-    <button class="arrow left" onclick="changeVideo(-1)">上一个数据集&#8592;</button>
-    <button class="arrow right" onclick="changeVideo(1)">下一个数据集&#8594;</button>
-</div>
-
-<div id="videoName" style="text-align: center; font-size: 18px; margin-top: 10px; font-weight: bold;"></div>
-<div id="nextVideoName" style="text-align: center; font-size: 16px; margin-top: 5px; color: #555;"></div>
-
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f9f9f9; /* 背景色 */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .video-container {
-        display: flex;
-        overflow: hidden; /* 防止滚动 */
-        white-space: nowrap;
-        margin: 20px;
-        border-radius: 15px; /* 圆角边框 */
-        box-shadow: 0 0px 0px rgba(0, 0, 0, 0.2); /* 阴影效果 */
-        background-color: #f9f9f9; /* 视频容器背景色 */
-    }
-    .video {
-        display: inline-block;
-        margin: 0px;
-    }
-    .video video {
-        width: 720px;
-        height: 720px; /* 视频高度 */
-        border-radius: 10px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    }
-    .slider-buttons {
-        text-align: center;
-        margin-top: 10px;
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-    }
-    .arrow {
-        padding: 15px;
-        font-size: 24px;
-        cursor: pointer;
-        border: none;
-        border-radius: 50%;
-        background-color: #4CAF50; /* 按钮背景色 */
-        color: white; /* 按钮字体颜色 */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    }
-    .arrow:hover {
-        background-color: #45a049; /* 悬停时颜色变化 */
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    }
-    .arrow:focus {
-        outline: none;
-    }
-    #videoName {
-        color: #333; /* 视频名称颜色 */
-    }
-    #nextVideoName {
-        color: #555; /* 下一个视频名称颜色 */
-    }
-</style>
 
 <script>
     const videos = document.querySelectorAll('.video video');
@@ -225,56 +121,28 @@
 
 </script>
 
-<p><center>(a)单帧姿态+Tracking可视化, <a href="https://github.com/naver/posescript">PoseScript</a>的图像版本,图上的文本为当前bbox人物的姿态描述，双击放大以查看详细标注，包括文本,MPJPE(关键点平均误差)和Y轴朝向(±180度为正面)。</center></p>
-<script>
-  // 等待页面加载完毕后执行代码
-  document.addEventListener('DOMContentLoaded', function() {
-    // 选择视频元素
-    const video = document.querySelector('.listitemimage');
-    
-    // 当鼠标悬停在视频上时暂停视频
-    video.addEventListener('mouseenter', function() {
-      video.pause();
-    });
-
-    // 当鼠标移开视频时恢复播放
-    video.addEventListener('mouseleave', function() {
-      video.play();
-    });
-  });
-</script>
-
-
 <center>
-<video width="90%" autoplay muted loop class="listitemimage" >
-  <source src="./research/posefix.mp4" type="video/mp4">
-</video>
-</center>
-<p><center>(b)双帧姿态描述变化量+第二帧姿态描述可视化(未Tracking版), <a href="https://arxiv.org/abs/2309.08480">PoseFix</a>的图像版本, 鼠标悬停以暂停。</center></p>
-
-<li><b>细粒度(动作/姿态)文本描述定位视频帧大模型</b>
+<li><b>细粒度(动作/姿态)文本描述定位视频帧大模型<a href="https://simon3dv.github.io/PoseScript/"> [ProjectPage]</a></b>
 <center>
-<video width="90%" autoplay muted loop class="listitemimage" >
+<video width="70%" autoplay muted loop class="listitemimage" >
   <source src="./research/yoga_demo_4x.mp4" type="video/mp4">
 </video>
 </center>
-<p><center>(鼠标悬停以放大)</center></p>
-<!--<li><b></b>作为对比: 2D姿态匹配视频帧
+
+<li><b>姿态匹配定位视频帧</b>
 <center>
-<video width="75%" autoplay muted loop class="listitemimage" >
+<video width="70%" autoplay muted loop class="listitemimage" >
   <source src="./research/pose_matching_4x.mp4" type="video/mp4">
 </video>
-</center>-->
+</center>
+<p><center>(鼠标悬停以放大)</center></p></center>
 
-
-
-<br><br>
 <h2>2021-2023 Rendering & Animation</h2>
 
 <li><b>3D Animation with Secondary Motion</b>
 
 <center>
-<video width="90%" autoplay muted loop class="listitemimage" >
+<video width="60%" autoplay muted loop class="listitemimage" >
   <source src="./research/snarf+vto.mp4" type="video/mp4">
 </video>
 </center>
@@ -301,7 +169,7 @@
 
 
 <center>
-<video width="90%" autoplay muted loop class="listitemimage" >
+<video width="70%" autoplay muted loop class="listitemimage" >
   <source src="./research/teaser-slr-sfs_batch.mp4" type="video/mp4">
 
 </video>

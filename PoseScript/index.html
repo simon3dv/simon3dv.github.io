@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="../assets/js/glightbox.js"></script>
+    <script src="https://use.fontawesome.com/baff6f55f5.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Siming Fan's Home Page</title>
+
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="D0ys6wLg07UNB0wxvc8V9r64Pwg4VU6mB_2gZNkVLhc" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q4DNPR3HF9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Q4DNPR3HF9');
+    </script>
+
+    <!-- For all browsers -->
+    <link rel="stylesheet" href="../assets/css/academicons.min.css"/>
+    <link rel="stylesheet" href="../assets/css/academicons.css"/>
+
+  </head>
+  <body>
+    <div class="wrapper">  
+      <header>
+        <h1>PoseScript</h1>
+
+
+
+
+
+
+<!--If you have relevant job recommendations, please check my <a href="https://simon3dv.github.io/research/CV_Chinese.pdf">CV</a>! (2024.09)--><br>
+      </header>
+      <section>
+
+      <h1>Open-source Projects in SenseTime Research</h1>
+      <!--<li>See more visulization in <a href="https://docs.google.com/presentation/d/1cyuVYw5DDlBnUbG2-DLo6fWGgYhiKvTUNeAD8Acf8OI/edit?usp=sharing">[Google Slide].</a>-->
+      <h2>2024 MultiModal Frame Retrieval in Video and Editing</h2>
+      <!--font style="color:#2DC997";></font>-->
+      <li><b>VideoLLM Retrieves Video Frames</b>
+      <center>
+        <img src="../research/FrameLocalizationWithGPT4o.png" alt="Frame Localization Image" style="width:80%;">
+      </center>
+	<center><p>BestMoment Annotation Example using our pipeline and GPT4o API, which is the best in action retrieval. </p></center>
+      
+      <li><b>Large-scale (18.6M instances) Synthetic Pose Text Annotation</b>
+        <p>This dataset aims to address the issues of high cost (￥0.03/character) in manual annotation and low accuracy (accuracy manual:GPT:ours=95%:70%:95%) in GPT4o annotation for pose description. It is divided into two versions: (a) single-frame pose description and (b) dual-frame pose change description, used for training text-to-frame models and image editing models.</p>
+      <div class="video-container" id="videoSlider">
+          <div class="video">
+              <video src="../research/posescript_edit/bedlam.mp4" controls autoplay muted loop></video>
+          </div>
+          <div class="video">
+              <video src="../research/posescript_edit/renbody.mp4" controls autoplay muted loop></video>
+          </div>
+          <div class="video">
+              <video src="../research/posescript_edit/synbody_v1_1.mp4" controls autoplay muted loop></video>
+          </div>
+          <div class="video">
+              <video src="../research/posescript_edit/pw3d.mp4" controls autoplay muted loop></video>
+          </div>
+          <div class="video">
+              <video src="../research/posescript_edit/talkshow.mp4" controls autoplay muted loop></video>
+          </div>
+          <div class="video">
+              <video src="../research/posescript_edit/ubody.mp4" controls autoplay muted loop></video>
+          </div>
+          <div class="video">
+              <video src="../research/posescript_edit/egobody.mp4" controls autoplay muted loop></video>
+          </div>
+          <div class="video">
+              <video src="../research/posescript_edit/posetrack.mp4" controls autoplay muted loop></video>
+          </div>
+      </div>
+      
+      <div class="slider-buttons">
+          <button class="arrow left" onclick="changeVideo(-1)">Previous Dataset&#8592;</button>
+          <button class="arrow right" onclick="changeVideo(1)">Next Dataset&#8594;</button>
+      </div>
+      
+      <div id="videoName" style="text-align: center; font-size: 18px; margin-top: 10px; font-weight: bold;"></div>
+      <div id="nextVideoName" style="text-align: center; font-size: 16px; margin-top: 5px; color: #555;"></div>
+      
+      <style>
+          body {
+              font-family: Arial, sans-serif;
+              margin: 0;
+              padding: 0;
+              background-color: #f9f9f9; /* Background color */
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+          }
+          .video-container {
+              display: flex;
+              overflow: hidden; /* Prevent scrolling */
+              white-space: nowrap;
+              margin: 20px;
+              border-radius: 15px; /* Rounded corners */
+              box-shadow: 0 0px 0px rgba(0, 0, 0, 0.2); /* Shadow effect */
+              background-color: #f9f9f9; /* Video container background color */
+          }
+          .video {
+              display: inline-block;
+              margin: 0px;
+          }
+          .video video {
+              width: 720px;
+              height: 720px; /* Video height */
+              border-radius: 10px;
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+          }
+          .slider-buttons {
+              text-align: center;
+              margin-top: 10px;
+              display: flex;
+              justify-content: center;
+              gap: 20px;
+          }
+          .arrow {
+              padding: 15px;
+              font-size: 24px;
+              cursor: pointer;
+              border: none;
+              border-radius: 50%;
+              background-color: #4CAF50; /* Button background color */
+              color: white; /* Button font color */
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+              transition: background-color 0.3s ease, box-shadow 0.3s ease;
+          }
+          .arrow:hover {
+              background-color: #45a049; /* Color change on hover */
+              box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+          }
+          .arrow:focus {
+              outline: none;
+          }
+          #videoName {
+              color: #333; /* Video name color */
+          }
+          #nextVideoName {
+              color: #555; /* Next video name color */
+          }
+      </style>
+      
+      <script>
+          const videos = document.querySelectorAll('.video video');
+          let currentIndex = 0; // Current video index
+          const videoNameDisplay = document.getElementById('videoName');
+          const nextVideoNameDisplay = document.getElementById('nextVideoName');
+      
+          function updateVideo(index) {
+              videos.forEach((video, i) => {
+                  video.style.display = (i === index) ? 'block' : 'none'; // Show only the current video
+              });
+      
+              // Update current video name
+              const fileName = videos[index].src.split('/').pop(); // Get video file name
+              videoNameDisplay.textContent = `Now Playing: ${fileName}`;
+      
+              // Update next video name
+              const nextIndex = (index + 1) % videos.length; // Get next video index
+              const nextFileName = videos[nextIndex].src.split('/').pop(); // Get next video file name
+              nextVideoNameDisplay.textContent = `Next Video: ${nextFileName}`;
+          }
+      
+          function changeVideo(direction) {
+              currentIndex += direction; // Increase or decrease index
+              if (currentIndex < 0) {
+                  currentIndex = videos.length - 1; // Loop to the last video
+              } else if (currentIndex >= videos.length) {
+                  currentIndex = 0; // Loop to the first video
+              }
+              updateVideo(currentIndex); // Update video display
+          }
+      
+          // Initialize display with the first video
+          updateVideo(currentIndex);
+      
+      </script>
+      
+      <p><center>(a) Single-frame pose + Tracking visualization, image version of <a href="https://github.com/naver/posescript">PoseScript</a>, the text on the image describes the pose of the current bbox person. Double-click to zoom in for detailed annotations, including text, MPJPE (mean per-joint position error), and Y-axis orientation (±180 degrees for front view).</center></p>
+      <script>
+        // Wait for the page to load before executing the code
+        document.addEventListener('DOMContentLoaded', function() {
+          // Select the video element
+          const video = document.querySelector('.listitemimage');
+          
+          // Pause the video when the mouse hovers over it
+          video.addEventListener('mouseenter', function() {
+            video.pause();
+          });
+      
+          // Resume playing the video when the mouse leaves
+          video.addEventListener('mouseleave', function() {
+            video.play();
+          });
+        });
+      </script>
+      
+      
+      <center>
+      <video width="90%" autoplay muted loop class="listitemimage" >
+        <source src="../research/posefix.mp4" type="video/mp4">
+      </video>
+      </center>
+      <p><center>(b) Dual-frame pose description change + second-frame pose description visualization (non-tracking version), image version of <a href="https://arxiv.org/abs/2309.08480">PoseFix</a>, hover to pause.</center></p>
+      
+      <li><b>Fine-grained (Action/Pose) Text Description to Locate Video Frames</b>
+      <center>
+      <video width="90%" autoplay muted loop class="listitemimage" >
+        <source src="../research/yoga_demo_4x.mp4" type="video/mp4">
+      </video>
+      </center>
+      <p><center>(Hover to zoom in)</center></p>
+      <!--<li><b></b>As a comparison: 2D pose matching video frames
+      <center>
+      <video width="75%" autoplay muted loop class="listitemimage" >
+        <source src="../research/pose_matching_4x.mp4" type="video/mp4">
+      </video>
+      </center>-->
+      
+      <br><br>
+
+          <!--<footer>
+            <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+          </footer>-->
+          </section>
+        
+        </div>
+      
+        <script src="../javascripts/scale.fix.js"></script>
+        <script src="https://kit.fontawesome.com/ccebcf5347.js" crossorigin="anonymous"></script>
+
+  </body>
+</html>      
